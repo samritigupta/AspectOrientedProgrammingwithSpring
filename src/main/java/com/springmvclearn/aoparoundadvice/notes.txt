@@ -1,0 +1,17 @@
+
+Main App              AOP Proxy                   @AroundAdvice                       FortuneService
+    |                    |                              |                                   |
+    |  - getfortune->    |                              |                                   |
+    |                    |   - getfortune->             |                                   |
+    |                    |                              |    - call target method-->        |
+    |                    |                              |                                   |
+    |                    |                              |    <---execution--                |
+    |                    |                              |                                   |
+    |                    |<---result---                 |//handle exception                 |
+    |                    |                              |                                   |
+    |  <-- result--      |                              |                                   |
+    |                    |                              |                                   |
+Main App              AOP Proxy                   @AroundAdvice                       FortuneService
+
+
+Main App will never know exception happened.

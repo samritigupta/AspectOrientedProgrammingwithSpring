@@ -1,0 +1,4 @@
+com/springmvclearn/aopdemo/dao/AccountDAO.class
+com/springmvclearn/aopdemo/aspect/MyDemoLoggingAspect.class
+com/springmvclearn/aopdemo/MainDemoApp.class
+com/springmvclearn/aopdemo/DemoConfig.class

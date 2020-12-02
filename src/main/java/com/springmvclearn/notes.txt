@@ -1,0 +1,94 @@
+AOP
+- cross cutting logic that all application needs.
+- Can be used at multiple location
+
+logging aspect                          logging aspect                        logging aspect
+security aspect                        security aspect                        security aspect
+<---------------> account controller <-------------------> Account Service<---------------------->Account DAO <---> db
+
+
+- AOP
+    - Everything happens behind the scene
+                                        logging aspect, security aspect
+    main app <------------>AOP Proxy<------------------------------------------> Target object
+ targetobj.dostuff();                                                       define dostuff(){}
+
+ //  main app and target don't know about AOP it checks behind the scene.
+
+
+AOP Usecases
+- logging, security, transaction
+- Audit logging (who, what, when , where)
+- Exception handling(log exception and notify devops)
+- API management(how many times method is called, analytics-peak time, avg load, top user)
+
+Advantage
+- reusable modules
+- resolve code tangling
+- resolve code scatter
+- applied selectivity based on configuration
+
+disadv
+- too many aspect and app flow is hard to follow.
+
+Terminology
+1. Aspect - module of a code for cross cutting concern
+2. Advice - What action taken and when it should be applied
+3. joint point - when to apply code during program execution
+4. pointcut - a predicate expression for where advice should be applied.
+
+Advice types:
+1. Before advice - run before the method
+2. After advice - run after the method(finally)
+3. after returning advice - run after the method(successful execution)
+4. after throwing advice - run after the method (if exception is thrown)
+5. Around advice - run before and after the method.
+
+
+Weaving
+- connecting aspect to target object to create advised object
+- different types of weaving
+1. compile time
+2. run time/load time (its slower than compile time)
+
+
+- AOP Framework
+Spring AOP and AspectJ
+
+Spring AOP
+- use run time weaving
+- security, transaction, caching, etc
+- Uses proxy pattern
+- can migrate to aspectJ when using @Aspect annotation
+- disadv (only support method level joint points, can only apply aspect to beans created by spring app context)
+- Spring AOP is light implementation of AspectJ.
+
+AspectJ
+- original framework.
+- Rich support for
+1. Join points- method level, constructor level, field level
+2. code weaving - supports both
+- works with any POJO not just beans
+- faster performance
+- diadv - for compile time weaving but need to do extra step and code is complex.
+
+
+Point cut execution
+execution(modifiers-pattern? ret-type-pattern declaring-type-pattern? name-pattern(param-pattern)
+          throws-pattern?)
+
+  modifiers-pattern - public
+  ret-type-pattern - return type
+  declaring-type-pattern - package.classname
+  name-pattern - method defination
+  throws-pattern - if method throws anything
+
+- Parameter pattern wild cards
+() - matches a method with no argument
+(*) - matches a method with one argument of any type
+(..) - matches a method of zero or more arguments of any type
+
+
+
+
+
